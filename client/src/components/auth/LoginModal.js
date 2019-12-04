@@ -39,7 +39,6 @@ function LoginModal(props) {
     const user = { email, password };
     //attemp to login
     props.login(user);
-    console.log(user);
   };
 
   useEffect(() => {

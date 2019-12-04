@@ -13,7 +13,6 @@ const User = require("../../models/Users");
 //@acess public
 router.post("/", (req, res) => {
   const { email, password } = req.body;
-  console.log("test", email, password);
   if (!email | !password)
     return res.status(400).json({ msg: "please enter all field" });
 
@@ -46,7 +45,7 @@ router.post("/", (req, res) => {
 // @access private
 router.get("/user", auth, (req, res) => {
   User.findById(req.user.id)
-    .select("-password")
+    .select(["-password"])
     .then(user => res.json(user));
 });
 

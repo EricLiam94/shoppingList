@@ -11,7 +11,6 @@ function ShoppingList(props) {
     getItems();
   }, [getItems]);
   const onDeleteClick = id => {
-    console.log(id);
     props.deleteItem(id);
   };
 

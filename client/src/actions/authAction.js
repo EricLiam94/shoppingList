@@ -54,7 +54,6 @@ export const register = ({ name, email, password }) => dispatch => {
       dispatch({
         type: REGISTER_FAIL
       });
-      console.log(err);
     });
 };
 
