@@ -1,19 +1,24 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const mongo = require("mongoose");
 const items = require("./routes/api/item");
+const users = require("./routes/api/user");
+const auth = require("./routes/api/auth");
 const path = require("path");
 require("dotenv").config();
 
 const app = express();
-
 //Bodyparser
-app.use(bodyParser.json());
+app.use(express.json());
 
+//Router
 app.use("/api/items", items);
+app.use("/api/users", users);
+app.use("/api/auth", auth);
+
+//Connect MongoDB
 mongo.connect(
   process.env.DB_URL,
-  { useNewUrlParser: true, useUnifiedTopology: true },
+  { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true },
   err => {
     console.log("mondodb is connected ...");
   }

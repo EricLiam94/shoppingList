@@ -20,14 +20,6 @@
     transition: opacity 1000ms ease-in
 }
 
-.modal-backdrop {
-    opacity: 0.5;
-}
-
-.modal.fade.in {
-    opacity: 1;
-}
-
-.modal.fade.in .modal-dialog {
-    transform: translate(0,0);
+.active-nav{
+    background: #57e76f;
 }
