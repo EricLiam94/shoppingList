@@ -23,3 +23,22 @@
 .active-nav{
     background: #57e76f;
 }
+
+
+/* Scroll bar  */
+
+::-webkit-scrollbar{
+    width:5px
+}
+
+::-webkit-scrollbar-track{
+    background: rgb(109, 220, 240);
+}
+
+::-webkit-scrollbar-thumb{
+    background: rgb(156, 255, 147);
+}
+
+::-webkit-scrollbar-thumb:hover{
+        background: #000;
+}

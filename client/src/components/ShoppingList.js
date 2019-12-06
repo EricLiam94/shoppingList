@@ -28,6 +28,7 @@ function ShoppingList(props) {
       <div>
         <input
           type="text"
+          color="dark"
           placeholder="Search item"
           className="form-control mb-5 dark"
           onChange={onChange}
