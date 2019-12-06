@@ -16,7 +16,7 @@ function App() {
   }, []);
   return (
     <Provider store={store}>
-      <div className="App">
+      <div className="App mb-5">
         <AppNavBar />
         <Container>
           <ItemModal />

@@ -1,4 +1,10 @@
-import { GET_ITEMS, ADD_ITEM, DELETE_ITEM, ITEMS_LOADING } from "./types";
+import {
+  GET_ITEMS,
+  ADD_ITEM,
+  DELETE_ITEM,
+  ITEMS_LOADING,
+  SEARCH_ITEM
+} from "./types";
 import axios from "axios";
 import { tokenConfig } from "./authAction";
 import { returnErrors } from "./errAction";
@@ -50,4 +56,11 @@ export const setItemsLoading = () => {
   return {
     type: ITEMS_LOADING
   };
+};
+
+export const searchItem = text => dispatch => {
+  dispatch({
+    type: SEARCH_ITEM,
+    payload: text
+  });
 };

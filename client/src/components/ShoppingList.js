@@ -1,12 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, ListGroup, ListGroupItem, Button } from "reactstrap";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { connect } from "react-redux";
-import { getItems, deleteItem } from "../actions/itemActions";
+import { getItems, deleteItem, searchItem } from "../actions/itemActions";
 import PropTypes from "prop-types";
+import { bindActionCreators } from "redux";
 
 function ShoppingList(props) {
   const getItems = props.getItems;
+  const [items, setitems] = useState([]);
+  const [search, setsearch] = useState(null);
+
   useEffect(() => {
     getItems();
   }, [getItems]);
@@ -14,11 +18,24 @@ function ShoppingList(props) {
     props.deleteItem(id);
   };
 
+  const onChange = e => {
+    e.preventDefault();
+    props.searchItem(e.target.value);
+  };
+
   return (
     <Container>
+      <div>
+        <input
+          type="text"
+          placeholder="Search item"
+          className="form-control mb-5 dark"
+          onChange={onChange}
+        />
+      </div>
       <ListGroup>
         <TransitionGroup className="shopping-list">
-          {props.item.items.map(({ _id, name }) => (
+          {props.display.map(({ _id, name }) => (
             <CSSTransition key={_id} timeout={500} classNames="fade">
               <ListGroupItem>
                 {props.isAuthenticated ? (
@@ -54,7 +71,14 @@ ShoppingList.propTypes = {
 
 const mapStateToProps = state => ({
   item: state.item,
-  isAuthenticated: state.auth.isAuthenticated
+  isAuthenticated: state.auth.isAuthenticated,
+  display: state.item.display
 });
 
-export default connect(mapStateToProps, { getItems, deleteItem })(ShoppingList);
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ searchItem }, dispatch);
+};
+
+export default connect(mapStateToProps, { getItems, deleteItem, searchItem })(
+  ShoppingList
+);
