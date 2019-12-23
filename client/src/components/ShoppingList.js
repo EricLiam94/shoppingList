@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { getItems, deleteItem, searchItem } from "../actions/itemActions";
 import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
+import ItemRow from "./ItemRow/ItemRow";
 
 function ShoppingList(props) {
   const getItems = props.getItems;
@@ -34,32 +35,27 @@ function ShoppingList(props) {
           onChange={onChange}
         />
       </div>
-      <ListGroup>
-        <TransitionGroup className="shopping-list">
-          {props.display.map(({ _id, name }) => (
-            <CSSTransition key={_id} timeout={500} classNames="fade">
-              <ListGroupItem>
-                {props.isAuthenticated ? (
-                  <Button
-                    className="remove-btn"
-                    color="danger"
-                    key={_id}
-                    size="sm"
-                    onClick={e => onDeleteClick(_id)}
-                  >
-                    {" "}
-                    &times;
-                  </Button>
-                ) : (
-                  ""
-                )}
-
-                {name}
-              </ListGroupItem>
-            </CSSTransition>
-          ))}
-        </TransitionGroup>
-      </ListGroup>
+      <div style={{ position: "relative" }}>
+        <ListGroup>
+          <TransitionGroup className="shopping-list">
+            {props.display.map(({ _id, name, price }) => (
+              <CSSTransition key={_id} timeout={500} classNames="fade">
+                <ListGroupItem>
+                  <ItemRow price={price} name={name} id={_id} />
+                </ListGroupItem>
+              </CSSTransition>
+            ))}
+          </TransitionGroup>
+        </ListGroup>
+        {props.display.length > 0 ? (
+          ""
+        ) : (
+          <div id="err_msg" className="err pop-up">
+            <i className="fas fa-exclamation-triangle"></i>
+            <h1> Ops, no such item </h1>
+          </div>
+        )}
+      </div>
     </Container>
   );
 }

@@ -16,8 +16,10 @@ import { addItem } from "../actions/itemActions";
 function ItemModal(props) {
   const [modal, setmodal] = useState(false);
   const [name, setname] = useState("");
+  const [price, setprice] = useState(0.0);
 
   const toggle = () => {
+    //inverse
     setmodal(!modal);
   };
 
@@ -25,10 +27,13 @@ function ItemModal(props) {
     setname(e.target.value);
   };
 
+  const onPriceChange = e => setprice(e.target.value);
+
   const onSubmit = e => {
     e.preventDefault();
     const newItem = {
-      name: name
+      name,
+      price
     };
     props.addItem(newItem);
     toggle();
@@ -50,13 +55,23 @@ function ItemModal(props) {
         <ModalBody>
           <Form onSubmit={onSubmit}>
             <FormGroup>
-              <Label for="item"></Label>
+              <Label for="item"> Name </Label>
               <Input
                 id="item"
                 type="text"
                 name="name"
                 placeholder="Add shopping item"
                 onChange={onChange}
+                className="mb-3"
+              />
+              <Label for="price"> Price </Label>
+              <Input
+                id="price"
+                type="number"
+                step="0.01"
+                name="price"
+                placeholder="0.0"
+                onChange={onPriceChange}
               />
               <Button color="dark" style={{ marginTop: "2rem" }} block>
                 {" "}

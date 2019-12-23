@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+
+.flt-right {
+  float: right;
+}
+
+.row-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.icon-style {
+  font-size: 1rem;
+  justify-content: center;
+}
+
+span > i {
+  margin-right: 2rem;
+}
+
+.grey-tool {
+  color: rgb(76, 146, 187);
+  cursor: pointer;
+}
+
+.grey-tool:hover {
+  color: rgb(0, 2, 2);
+}
+
+.tag {
+  text-transform: capitalize;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.price-tag {
+  width: auto;
+  margin: auto;
+  font-style: italic;
+}
+
+.row-container div {
+  width: 33%;
+}
+
+@media (max-width: 370px) {
+  .row-container div {
+    width: 100%;
+  }
+  .flt-right {
+    float: left;
+  }
+}

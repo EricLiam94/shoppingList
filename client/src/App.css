@@ -1,44 +1,82 @@
 .remove-btn {
-    margin-right : 1rem
-} 
+  margin-right: 1rem;
+}
 
 .fade-enter {
-    opacity:0.01
+  opacity: 0.01;
 }
 
-.fade-enter-active{
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms ease-in;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0.01;
+  transition: opacity 1000ms ease-in;
+}
+
+.active-nav {
+  background: #57e76f;
+}
+
+li.list-group-item {
+  transition: 0.4s;
+}
+
+li.list-group-item:hover {
+  background-color: rgb(233, 233, 233);
+}
+
+.err {
+  position: absolute;
+  top: 0;
+  margin-top: 20px;
+  width: 100%;
+  font-size: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(189, 3, 3);
+  transition: all 1s;
+  animation: pop 0.8s linear;
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+  }
+  to {
     opacity: 1;
-    transition: opacity 1000ms ease-in
+  }
 }
 
-.fade-exit{
-    opacity:1
+.err.hidden {
+  opacity: 0;
 }
 
-.fade-exit-active{
-    opacity: 0.01;
-    transition: opacity 1000ms ease-in
+.err.popup {
+  opacity: 1;
 }
-
-.active-nav{
-    background: #57e76f;
-}
-
 
 /* Scroll bar  */
 
-::-webkit-scrollbar{
-    width:5px
+::-webkit-scrollbar {
+  width: 5px;
 }
 
-::-webkit-scrollbar-track{
-    background: rgb(109, 220, 240);
+::-webkit-scrollbar-track {
+  background: rgb(109, 220, 240);
 }
 
-::-webkit-scrollbar-thumb{
-    background: rgb(156, 255, 147);
+::-webkit-scrollbar-thumb {
+  background: rgb(156, 255, 147);
 }
 
-::-webkit-scrollbar-thumb:hover{
-        background: #000;
+::-webkit-scrollbar-thumb:hover {
+  background: #000;
 }

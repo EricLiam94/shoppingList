@@ -18,9 +18,11 @@ function AppNavBar(props) {
   const [open, setOpen] = useState(false);
   const { isAuthenticated, user } = props.auth;
   const toggle = () => {
+    //inverse
     setOpen(!open);
   };
 
+  // Guest user
   const guestLink = (
     <Fragment>
       <NavItem>
@@ -32,6 +34,7 @@ function AppNavBar(props) {
     </Fragment>
   );
 
+  // authoriazed user
   const authLink = (
     <Fragment>
       <NavItem>
