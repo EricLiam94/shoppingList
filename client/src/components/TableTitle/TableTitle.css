@@ -1,0 +1,30 @@
+.black-container {
+  background-color: rgb(21, 20, 44);
+  color: white;
+
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.sort-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.sort-icon {
+  font-size: 1rem;
+  margin-left: 1rem;
+  cursor: pointer;
+  transition: 0.5s ease-out;
+}
+
+.sort-icon-activate {
+  color: greenyellow;
+  transform: scale(1.2);
+}
+
+.title-padding {
+  padding: 0.6rem 0;
+}

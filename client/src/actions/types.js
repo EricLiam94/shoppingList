@@ -13,3 +13,6 @@ export const REGISTER_FAIL = "REGISTER_FAIL";
 export const GET_ERRORS = "GET_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 export const SEARCH_ITEM = "SEARCH_ITEM";
+export const ITEM_UPDATE = "ITEM_UPDATE";
+export const SORT_PRICE_DESC = "SORT_PRICE_DESC";
+export const SORT_PRICE_ASC = "SORT_PRICE_ASC";

@@ -3,7 +3,10 @@ import {
   ADD_ITEM,
   DELETE_ITEM,
   ITEMS_LOADING,
-  SEARCH_ITEM
+  SEARCH_ITEM,
+  ITEM_UPDATE,
+  SORT_PRICE_ASC,
+  SORT_PRICE_DESC
 } from "./types";
 import axios from "axios";
 import { tokenConfig } from "./authAction";
@@ -13,10 +16,38 @@ export const getItems = () => dispatch => {
   dispatch(setItemsLoading());
   axios
     .get("/api/items")
-    .then(res =>
+    .then(res => {
       dispatch({
         type: GET_ITEMS,
         payload: res.data
+      });
+    })
+    .catch(err =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
+};
+
+export const sortByPriceASC = () => {
+  console.log("ASC");
+  return {
+    type: SORT_PRICE_ASC
+  };
+};
+
+export const sortByPriceDESC = () => {
+  console.log("DESC");
+  return {
+    type: SORT_PRICE_DESC
+  };
+};
+
+export const updateItem = item => (dispatch, getState) => {
+  axios
+    .post("/api/items/update", item, tokenConfig(getState))
+    .then(res =>
+      dispatch({
+        type: ITEM_UPDATE,
+        payload: item
       })
     )
     .catch(err =>

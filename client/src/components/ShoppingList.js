@@ -6,6 +6,7 @@ import { getItems, deleteItem, searchItem } from "../actions/itemActions";
 import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 import ItemRow from "./ItemRow/ItemRow";
+import TableTitle from "./TableTitle/TableTitle";
 
 function ShoppingList(props) {
   const getItems = props.getItems;
@@ -37,6 +38,7 @@ function ShoppingList(props) {
       </div>
       <div style={{ position: "relative" }}>
         <ListGroup>
+          <TableTitle length={props.display.length} />
           <TransitionGroup className="shopping-list">
             {props.display.map(({ _id, name, price }) => (
               <CSSTransition key={_id} timeout={500} classNames="fade">

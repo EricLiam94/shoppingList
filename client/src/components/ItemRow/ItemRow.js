@@ -1,22 +1,61 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { deleteItem } from "../../actions/itemActions";
+import { updateItem, deleteItem } from "../../actions/itemActions";
 import { Button } from "reactstrap";
 import "./ItemRow.css";
 
 const ItemRow = props => {
+  const [readMode, setreadMode] = useState(true);
+  const [name, setname] = useState("");
+  const [price, setprice] = useState(0);
+  useEffect(() => {
+    setname(props.name);
+    setprice(props.price);
+  }, [props]);
+
   const onDeleteClick = id => {
     props.deleteItem(id);
   };
 
+  const priceOnChange = e => {
+    setprice(e.target.value);
+  };
+
+  const nameOnChange = e => {
+    setname(e.target.value);
+  };
+
+  const modifyClick = () => setreadMode(!readMode);
+
+  const confirmClick = () => {
+    modifyClick();
+    props.updateItem({ _id: props.id, name, price });
+  };
+
   return (
     <div className="row-container">
-      <div className="tag">{props.name}</div>
-      <div className="tag price-tag">{parseFloat(props.price).toFixed(2)}</div>
+      <input
+        type="text"
+        value={name}
+        readOnly={readMode}
+        onChange={nameOnChange}
+        className="tag"
+      ></input>
+      <input
+        type="number"
+        className="tag price-tag"
+        onChange={priceOnChange}
+        value={readMode ? parseFloat(price).toFixed(2) : price}
+        readOnly={readMode}
+      />
       {props.isAuthenticated ? (
         <div>
           <span className="flt-right icon-style">
-            <i className="fas fa-wrench grey-tool"></i>
+            {readMode ? (
+              <i className="fas fa-wrench grey-tool" onClick={modifyClick}></i>
+            ) : (
+              <i className="fas fa-check grey-tool" onClick={confirmClick}></i>
+            )}
             <Button
               className="flt-right remove-btn "
               color="danger"
@@ -24,7 +63,7 @@ const ItemRow = props => {
               size="sm"
               onClick={e => onDeleteClick(props.id)}
             >
-              <i class="fas fa-trash-alt"></i>
+              <i className="fas fa-trash-alt"></i>
             </Button>
           </span>
         </div>
@@ -39,4 +78,4 @@ const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(mapStateToProps, { deleteItem })(ItemRow);
+export default connect(mapStateToProps, { updateItem, deleteItem })(ItemRow);

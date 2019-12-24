@@ -42,7 +42,11 @@ function ItemModal(props) {
   return (
     <div>
       {props.isAuthenticated ? (
-        <Button color="dark" style={{ marginBottom: "2rem" }} onClick={toggle}>
+        <Button
+          color="dark"
+          style={{ marginBottom: "2rem", float: "right" }}
+          onClick={toggle}
+        >
           {" "}
           Add Item{" "}
         </Button>

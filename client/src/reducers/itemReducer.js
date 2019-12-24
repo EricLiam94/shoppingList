@@ -3,7 +3,10 @@ import {
   ADD_ITEM,
   DELETE_ITEM,
   ITEMS_LOADING,
-  SEARCH_ITEM
+  SEARCH_ITEM,
+  ITEM_UPDATE,
+  SORT_PRICE_ASC,
+  SORT_PRICE_DESC
 } from "../actions/types";
 
 const initialState = {
@@ -27,6 +30,34 @@ export default function(state = initialState, action) {
         ...state,
         items: state.items.filter(item => item._id !== action.payload),
         display: state.display.filter(item => item._id !== action.payload)
+      };
+    case ITEM_UPDATE:
+      var update_item = state.items.filter(
+        item => item._id === action.payload._id
+      )[0];
+      var update_display = state.display.filter(
+        item => item._id === action.payload._id
+      )[0];
+      update_item = action.payload;
+      update_display = action.payload;
+      return {
+        ...state
+      };
+    case SORT_PRICE_ASC:
+      state.display.sort((a, b) => {
+        return a.price - b.price;
+      });
+      return {
+        ...state,
+        display: state.display
+      };
+    case SORT_PRICE_DESC:
+      state.display.sort((a, b) => {
+        return b.price - a.price;
+      });
+      return {
+        ...state,
+        display: state.display
       };
     case ADD_ITEM:
       return {

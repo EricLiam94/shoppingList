@@ -7,6 +7,8 @@
 .row-container {
   display: flex;
   align-items: center;
+  flex-basis: 0;
+  flex-grow: 1;
   justify-content: space-around;
   flex-wrap: wrap;
 }
@@ -29,26 +31,27 @@ span > i {
   color: rgb(0, 2, 2);
 }
 
+.tag:read-only {
+  border: none;
+  background: inherit;
+}
+
+.tag[readOnly="false"] {
+  background-color: #fff;
+}
+
 .tag {
+  outline: none;
   text-transform: capitalize;
   font-size: 1rem;
   font-family: "Roboto", sans-serif;
 }
 
 .price-tag {
-  width: auto;
-  margin: auto;
   font-style: italic;
 }
 
-.row-container div {
-  width: 33%;
-}
-
-@media (max-width: 370px) {
-  .row-container div {
-    width: 100%;
-  }
+@media (max-width: 400px) {
   .flt-right {
     float: left;
   }

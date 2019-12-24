@@ -28,6 +28,20 @@ router.post("/", auth, (req, res) => {
   newItem.save().then(item => res.json(item));
 });
 
+//@route POST api/items/update
+//@desc Update item
+//@access private
+router.post("/update", auth, (req, res) => {
+  console.log(req.body);
+  Item.findById(req.body._id)
+    .then(item => {
+      item.name = req.body.name;
+      item.price = req.body.price;
+      item.save().then(() => res.json(item));
+    })
+    .catch(err => res.status(404).json({ success: false }));
+});
+
 // @route Delete api/items
 // @desc Delete items
 // @access Public

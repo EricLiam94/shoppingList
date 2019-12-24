@@ -1,3 +1,9 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 .remove-btn {
   margin-right: 1rem;
 }
@@ -35,7 +41,7 @@ li.list-group-item:hover {
 .err {
   position: absolute;
   top: 0;
-  margin-top: 20px;
+  margin-top: 50px;
   width: 100%;
   font-size: 3rem;
   display: flex;
