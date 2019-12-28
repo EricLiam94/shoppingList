@@ -1,9 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 
-.flt-right {
-  float: right;
-}
-
 .row-container {
   display: flex;
   align-items: center;
@@ -13,13 +9,16 @@
   flex-wrap: wrap;
 }
 
-.icon-style {
-  font-size: 1rem;
-  justify-content: center;
+.icon-container {
+  width: 33%;
+  padding: 0 5vw;
 }
 
-span > i {
-  margin-right: 2rem;
+.icon-style {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 1.5rem;
 }
 
 .grey-tool {
@@ -36,12 +35,20 @@ span > i {
   background: inherit;
 }
 
+.input-middle {
+  text-align: center;
+}
+
 .tag[readOnly="false"] {
   background-color: #fff;
+  outline: none;
+  padding: 0;
+  border: none;
 }
 
 .tag {
   outline: none;
+  width: 33%;
   text-transform: capitalize;
   font-size: 1rem;
   font-family: "Roboto", sans-serif;
@@ -52,7 +59,14 @@ span > i {
 }
 
 @media (max-width: 400px) {
-  .flt-right {
-    float: left;
+  .grey-tool {
+    font-size: 4vw;
+  }
+  .list-group-item {
+    padding: 2vw 3vw;
+  }
+
+  .tag {
+    font-size: 4vw;
   }
 }

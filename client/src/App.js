@@ -8,6 +8,8 @@ import { Container } from "reactstrap";
 import { Provider } from "react-redux";
 import { loadUser } from "./actions/authAction";
 import store from "./store";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import ItemDetail from "./components/ItemDetail/ItemDetail";
 
 function App() {
   useEffect(() => {
@@ -18,10 +20,17 @@ function App() {
     <Provider store={store}>
       <div className="App mb-5">
         <AppNavBar />
-        <Container>
-          <ItemModal />
-          <ShoppingList />
-        </Container>
+        <Router>
+          <Switch>
+            <Route exact path="/item/:id" component={ItemDetail} />
+            <Route path="*">
+              <Container>
+                <ItemModal />
+                <ShoppingList />
+              </Container>
+            </Route>
+          </Switch>
+        </Router>
       </div>
     </Provider>
   );

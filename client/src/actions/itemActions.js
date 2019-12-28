@@ -28,14 +28,12 @@ export const getItems = () => dispatch => {
 };
 
 export const sortByPriceASC = () => {
-  console.log("ASC");
   return {
     type: SORT_PRICE_ASC
   };
 };
 
 export const sortByPriceDESC = () => {
-  console.log("DESC");
   return {
     type: SORT_PRICE_DESC
   };

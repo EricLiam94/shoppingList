@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+.App {
+  min-height: 90vh;
+}
+
 .remove-btn {
   margin-right: 1rem;
 }
@@ -69,20 +73,27 @@ li.list-group-item:hover {
   opacity: 1;
 }
 
+@media (max-width: 400px) {
+  .App {
+    min-height: 100vh;
+  }
+}
+
 /* Scroll bar  */
+@media (min-width: 560px) {
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
 
-::-webkit-scrollbar {
-  width: 5px;
-}
+  ::-webkit-scrollbar-track {
+    background: rgb(109, 220, 240);
+  }
 
-::-webkit-scrollbar-track {
-  background: rgb(109, 220, 240);
-}
+  ::-webkit-scrollbar-thumb {
+    background: rgb(156, 255, 147);
+  }
 
-::-webkit-scrollbar-thumb {
-  background: rgb(156, 255, 147);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #000;
+  ::-webkit-scrollbar-thumb:hover {
+    background: #000;
+  }
 }

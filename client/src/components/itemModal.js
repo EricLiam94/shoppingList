@@ -17,6 +17,7 @@ function ItemModal(props) {
   const [modal, setmodal] = useState(false);
   const [name, setname] = useState("");
   const [price, setprice] = useState(0.0);
+  const [error, seterror] = useState(null);
 
   const toggle = () => {
     //inverse
@@ -31,6 +32,11 @@ function ItemModal(props) {
 
   const onSubmit = e => {
     e.preventDefault();
+
+    if (price <= 0) {
+      return seterror("Price can not be negative");
+    }
+
     const newItem = {
       name,
       price
@@ -73,6 +79,7 @@ function ItemModal(props) {
                 id="price"
                 type="number"
                 step="0.01"
+                min="0.00"
                 name="price"
                 placeholder="0.0"
                 onChange={onPriceChange}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { updateItem, deleteItem } from "../../actions/itemActions";
 import { Button } from "reactstrap";
+import { NavLink } from "react-router-dom";
 import "./ItemRow.css";
 
 const ItemRow = props => {
@@ -39,23 +40,27 @@ const ItemRow = props => {
         value={name}
         readOnly={readMode}
         onChange={nameOnChange}
-        className="tag"
-      ></input>
+        className={"tag input-middle"}
+      />
       <input
         type="number"
-        className="tag price-tag"
+        className={"tag price-tag input-middle"}
         onChange={priceOnChange}
         value={readMode ? parseFloat(price).toFixed(2) : price}
         readOnly={readMode}
       />
       {props.isAuthenticated ? (
-        <div>
+        <div className="icon-container">
           <span className="flt-right icon-style">
+            <NavLink to={`/item/${props.id}`}>
+              <i class="fas fa-directions grey-tool"></i>{" "}
+            </NavLink>
             {readMode ? (
               <i className="fas fa-wrench grey-tool" onClick={modifyClick}></i>
             ) : (
               <i className="fas fa-check grey-tool" onClick={confirmClick}></i>
             )}
+
             <Button
               className="flt-right remove-btn "
               color="danger"
