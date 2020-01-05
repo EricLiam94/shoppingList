@@ -12,6 +12,7 @@ router.get("/:query", async (req, res) => {
     const data = await client.search(req.params.query, { size: "xlarge" });
     res.json({ url: data[0].url });
   } catch (error) {
+    console.log(error);
     res.status(400).json({ success: false, msg: error });
   }
 });
