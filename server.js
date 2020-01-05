@@ -3,6 +3,7 @@ const mongo = require("mongoose");
 const items = require("./routes/api/item");
 const users = require("./routes/api/user");
 const auth = require("./routes/api/auth");
+const img = require("./routes/api/img");
 const path = require("path");
 require("dotenv").config();
 
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use("/api/items", items);
 app.use("/api/users", users);
 app.use("/api/auth", auth);
+app.use("/api/img", img);
 
 //Connect MongoDB
 mongo.connect(

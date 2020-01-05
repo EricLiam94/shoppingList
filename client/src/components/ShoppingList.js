@@ -1,24 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { Container, ListGroup, ListGroupItem, Button } from "reactstrap";
+import React, { useEffect } from "react";
+import { Container, ListGroup, ListGroupItem } from "reactstrap";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { connect } from "react-redux";
-import { getItems, deleteItem, searchItem } from "../actions/itemActions";
+import { getItems, searchItem } from "../actions/itemActions";
 import PropTypes from "prop-types";
-import { bindActionCreators } from "redux";
 import ItemRow from "./ItemRow/ItemRow";
 import TableTitle from "./TableTitle/TableTitle";
 
 function ShoppingList(props) {
   const getItems = props.getItems;
-  const [items, setitems] = useState([]);
-  const [search, setsearch] = useState(null);
 
   useEffect(() => {
     getItems();
   }, [getItems]);
-  const onDeleteClick = id => {
-    props.deleteItem(id);
-  };
 
   const onChange = e => {
     e.preventDefault();
@@ -74,10 +68,8 @@ const mapStateToProps = state => ({
   display: state.item.display
 });
 
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ searchItem }, dispatch);
-};
+// const mapDispatchToProps = dispatch => {
+//   return bindActionCreators({ searchItem }, dispatch);
+// };
 
-export default connect(mapStateToProps, { getItems, deleteItem, searchItem })(
-  ShoppingList
-);
+export default connect(mapStateToProps, { getItems, searchItem })(ShoppingList);

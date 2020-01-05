@@ -52,8 +52,8 @@ const ItemRow = props => {
       {props.isAuthenticated ? (
         <div className="icon-container">
           <span className="flt-right icon-style">
-            <NavLink to={`/item/${props.id}`}>
-              <i class="fas fa-directions grey-tool"></i>{" "}
+            <NavLink to={`/item/${name}/${props.id}`}>
+              <i className="fas fa-directions grey-tool"></i>{" "}
             </NavLink>
             {readMode ? (
               <i className="fas fa-wrench grey-tool" onClick={modifyClick}></i>

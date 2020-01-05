@@ -38,8 +38,8 @@ export default function(state = initialState, action) {
       var update_display = state.display.filter(
         item => item._id === action.payload._id
       )[0];
-      update_item = action.payload;
-      update_display = action.payload;
+      // update_item = action.payload;
+      // update_display = action.payload;
       return {
         ...state
       };

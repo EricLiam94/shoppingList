@@ -15,23 +15,17 @@ export const loadUser = () => async (dispatch, getState) => {
   //User loading
   dispatch({ type: USER_LOADING });
 
-  const res = await axios.get("/api/auth/user", tokenConfig(getState));
-  dispatch({
-    type: USER_LOADED,
-    payload: res.data
-  });
-  // .then(res =>
-  //   dispatch({
-  //     type: USER_LOADED,
-  //     payload: res.data
-  //   })
-  // )
-  // .catch(err => {
-  //   dispatch(returnErrors(err.response.data, err.response.status));
-  //   dispatch({
-  //     type: AUTH_ERROR
-  //   });
-  // });
+  try {
+    const res = await axios.get("/api/auth/user", tokenConfig(getState));
+    dispatch({
+      type: USER_LOADED,
+      payload: res.data
+    });
+  } catch (e) {
+    dispatch({
+      type: LOGIN_FAIL
+    });
+  }
 };
 
 //Register User

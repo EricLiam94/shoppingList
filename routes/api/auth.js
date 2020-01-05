@@ -3,7 +3,6 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const auth = require("../../middleware/auth");
-require("dotenv").config();
 
 // Item model
 const User = require("../../models/Users");
@@ -23,7 +22,7 @@ router.post("/", (req, res) => {
       jwt.sign(
         { id: user.id },
         process.env.JWT_SECRECT,
-        { expiresIn: 3600 },
+        { expiresIn: 3600 * 24 * 30 },
         (err, token) => {
           if (err) throw err;
           res.json({

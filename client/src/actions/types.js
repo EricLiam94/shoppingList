@@ -16,3 +16,6 @@ export const SEARCH_ITEM = "SEARCH_ITEM";
 export const ITEM_UPDATE = "ITEM_UPDATE";
 export const SORT_PRICE_DESC = "SORT_PRICE_DESC";
 export const SORT_PRICE_ASC = "SORT_PRICE_ASC";
+export const IMG_LOADING = "IMG_LOADING";
+export const IMG_LOADED = "IMG_LOADED";
+export const IMG_ERROR = "IMG_ERROR";

@@ -22,7 +22,7 @@ function App() {
         <AppNavBar />
         <Router>
           <Switch>
-            <Route exact path="/item/:id" component={ItemDetail} />
+            <Route exact path="/item/:name/:id" component={ItemDetail} />
             <Route path="*">
               <Container>
                 <ItemModal />
