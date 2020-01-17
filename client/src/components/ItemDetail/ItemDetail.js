@@ -14,6 +14,9 @@ const ItemDetail = props => {
   const leftIdx = idx === 0 ? items.length - 1 : idx - 1;
   const rightIdx = idx === items.length - 1 ? 0 : idx + 1;
   const nextPage = (input_idx, input_item) => {
+    if (!input_item) {
+      return { pathname: "/" };
+    }
     return {
       pathname: `/item/${input_item.name}/${input_item._id}`,
       state: {
@@ -30,21 +33,15 @@ const ItemDetail = props => {
 
   return (
     <div className={styled.container}>
-      {props.loading && (
-        <div>
-          <div className={styled.loader}> </div>
-          <span> Loading</span>
-        </div>
-      )}
-      {props.img && (
-        <ControllerComponent
-          leftPage={nextPage(leftIdx, items[leftIdx])}
-          rightPage={nextPage(rightIdx, items[rightIdx])}
-          url={props.img}
-          name={name}
-          desc={desc}
-        />
-      )}
+      <ControllerComponent
+        leftPage={nextPage(leftIdx, items[leftIdx])}
+        rightPage={nextPage(rightIdx, items[rightIdx])}
+        loading={props.loading}
+        url={props.img}
+        name={name}
+        desc={desc}
+      />
+
       {props.img && (
         <p className={styled.detail_info}>
           <span className={styled.font_price}> Price : {price} </span>
@@ -79,7 +76,15 @@ const ControllerComponent = props => (
       {" "}
       <i className={"fas fa-chevron-circle-left " + styled.big_icon}> </i>{" "}
     </NavLink>
-    <ImgComponent url={props.url} name={props.name} desc={props.desc} />
+    {props.loading && (
+      <div>
+        <div className={styled.loader}> </div>
+        <span> Loading</span>
+      </div>
+    )}
+    {props.url && (
+      <ImgComponent url={props.url} name={props.name} desc={props.desc} />
+    )}
     <NavLink to={props.rightPage}>
       {" "}
       <i className={"fas fa-chevron-circle-right " + styled.big_icon}></i>{" "}
