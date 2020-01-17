@@ -21,13 +21,27 @@
   font-size: 1.5rem;
 }
 
+.icon-style a .grey-tool {
+  margin: auto;
+}
+
 .grey-tool {
   color: rgb(76, 146, 187);
   cursor: pointer;
+  transition: 0.4s ease;
+  display: block;
+}
+
+.grey-tool:nth-child(3) {
+  color: red;
 }
 
 .grey-tool:hover {
   color: rgb(0, 2, 2);
+}
+
+.grey-tool:nth-child(3):hover {
+  color: rgb(102, 3, 3);
 }
 
 .tag:read-only {
@@ -68,5 +82,8 @@
 
   .tag {
     font-size: 4vw;
+  }
+  .icon-container {
+    padding: 0 5px;
   }
 }

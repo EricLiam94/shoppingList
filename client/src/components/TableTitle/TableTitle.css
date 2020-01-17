@@ -6,11 +6,21 @@
   border-top-right-radius: 15px;
 }
 
+.black-container h3 {
+  margin-bottom: 0;
+}
+
 .sort-container {
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
+}
+
+.sort-container h3 {
+  height: 100%;
+  text-align: center;
+  margin: auto;
 }
 
 .sort-icon {

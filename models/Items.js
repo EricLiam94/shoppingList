@@ -13,6 +13,10 @@ const ItemSchema = new Schema({
   price: {
     type: Number,
     required: true
+  },
+  description: {
+    type: String,
+    default: "No description left"
   }
 });
 

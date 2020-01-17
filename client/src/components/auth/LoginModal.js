@@ -57,7 +57,7 @@ function LoginModal(props) {
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle}>Login</ModalHeader>
         <ModalBody>
-          {msg ? <Alert color="danger">{msg} </Alert> : null}
+          {msg && <Alert color="danger">{msg} </Alert>}
           <Form onSubmit={onSubmit}>
             <FormGroup>
               <Label for="email">Email</Label>

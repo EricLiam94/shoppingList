@@ -27,23 +27,26 @@ const TableTitle = props => {
             <h3> Name </h3>
           </div>
           <div className="sort-container ">
-            <h3> Price($) </h3>
-            <i
-              className={
-                "fas fa-sort-amount-up-alt sort-icon " +
-                (ASC ? "sort-icon-activate" : "")
-              }
-              onClick={priceASC}
-            ></i>
-            <i
-              className={
-                "fas fa-sort-amount-down sort-icon " +
-                (DESC ? "sort-icon-activate" : "")
-              }
-              onClick={priceDESC}
-            ></i>
+            <h3>
+              {" "}
+              Price($)
+              <i
+                className={
+                  "fas fa-sort-amount-up-alt sort-icon " +
+                  (ASC ? "sort-icon-activate" : "")
+                }
+                onClick={priceASC}
+              ></i>
+              <i
+                className={
+                  "fas fa-sort-amount-down sort-icon " +
+                  (DESC ? "sort-icon-activate" : "")
+                }
+                onClick={priceDESC}
+              ></i>{" "}
+            </h3>
           </div>
-          {props.isAuth ? <h3> Operation </h3> : null}
+          {props.isAuth && <h3> Operation </h3>}
         </div>
       ) : (
         ""

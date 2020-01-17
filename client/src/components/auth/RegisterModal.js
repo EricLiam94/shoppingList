@@ -64,7 +64,7 @@ function RegisterModal(props) {
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle}>Register new user</ModalHeader>
         <ModalBody>
-          {msg ? <Alert color="danger">{msg} </Alert> : null}
+          {msg && <Alert color="danger">{msg} </Alert>}
           <Form onSubmit={onSubmit}>
             <FormGroup>
               <Label for="name">Name</Label>

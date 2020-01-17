@@ -6,18 +6,20 @@
   font-size: 2rem;
   flex-direction: column;
   overflow-wrap: break-word;
+  max-width: 100vw;
 }
 
 .img {
   width: 100%;
-  height: 200px;
+  height: 100%;
   object-fit: cover;
   object-position: 0 0;
   border-radius: 5px 5px 0 0;
 }
 
 .polaroid {
-  width: 40%;
+  position: relative;
+  width: 60%;
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-bottom: 25px;
@@ -27,6 +29,8 @@
 .img_desc {
   text-align: center;
   padding: 10px 20px;
+  text-transform: capitalize;
+  font-weight: 400;
 }
 
 .loader {
@@ -36,6 +40,106 @@
   width: 120px;
   height: 120px;
   animation: spin 2s linear infinite;
+}
+
+.detail_info {
+  display: flex;
+  padding: 0 10%;
+  max-width: 80%;
+  /* flex-wrap: wrap; */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.font_id {
+  overflow: hidden;
+  font-weight: 500;
+}
+
+.front_face {
+  backface-visibility: hidden;
+  transition: 1s ease;
+}
+
+.back_face p {
+  opacity: 1;
+}
+
+.back_face {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  font-weight: 400px;
+  border-radius: 5px 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  background-image: linear-gradient(
+    45deg,
+    rgb(80, 129, 235),
+    rgb(60, 199, 176)
+  );
+  align-items: center;
+  color: #f3f3f3;
+  top: 50%;
+  opacity: 0;
+  left: 50%;
+  backface-visibility: hidden;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  transition: 0.6s ease-in-out;
+}
+
+.flex_container {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.big_icon {
+  font-size: 5vw;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+.big_icon:hover {
+  color: rgb(64, 101, 168);
+}
+
+.img_desc p {
+  margin: 0;
+}
+
+.face_container {
+  width: 100%;
+
+  height: 200px;
+  position: relative;
+}
+
+/* .face_container:hover .front_face {
+  transform: rotateY(180deg);
+} */
+
+.face_container:hover .back_face {
+  opacity: 80%;
+}
+
+@media (max-width: 500px) {
+  .polaroid {
+    width: 80%;
+  }
+
+  .img_desc {
+    padding: 0;
+  }
+
+  .detail_info span {
+    font-size: 4vw;
+  }
 }
 
 @keyframes spin {

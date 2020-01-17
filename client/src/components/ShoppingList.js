@@ -8,19 +8,13 @@ import ItemRow from "./ItemRow/ItemRow";
 import TableTitle from "./TableTitle/TableTitle";
 
 function ShoppingList(props) {
-  const getItems = props.getItems;
-
-  useEffect(() => {
-    getItems();
-  }, [getItems]);
-
   const onChange = e => {
     e.preventDefault();
     props.searchItem(e.target.value);
   };
 
   return (
-    <Container>
+    <Container style={{ marginTop: "100px" }}>
       <div>
         <input
           type="text"
@@ -34,10 +28,16 @@ function ShoppingList(props) {
         <ListGroup>
           <TableTitle length={props.display.length} />
           <TransitionGroup className="shopping-list">
-            {props.display.map(({ _id, name, price }) => (
+            {props.display.map(({ _id, name, price, description }, index) => (
               <CSSTransition key={_id} timeout={500} classNames="fade">
                 <ListGroupItem>
-                  <ItemRow price={price} name={name} id={_id} />
+                  <ItemRow
+                    price={price}
+                    name={name}
+                    desc={description}
+                    id={_id}
+                    idx={index}
+                  />
                 </ListGroupItem>
               </CSSTransition>
             ))}

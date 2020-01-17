@@ -7,6 +7,7 @@ import ItemModal from "./components/itemModal";
 import { Container } from "reactstrap";
 import { Provider } from "react-redux";
 import { loadUser } from "./actions/authAction";
+import { getItems } from "./actions/itemActions";
 import store from "./store";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ItemDetail from "./components/ItemDetail/ItemDetail";
@@ -14,6 +15,7 @@ import ItemDetail from "./components/ItemDetail/ItemDetail";
 function App() {
   useEffect(() => {
     store.dispatch(loadUser());
+    store.dispatch(getItems());
     return;
   }, []);
   return (

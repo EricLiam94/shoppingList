@@ -7,7 +7,6 @@ export const loadingImg = q => async dispatch => {
   });
   try {
     const res = await axios.get(`/api/img/${q}`);
-    console.log(res);
     dispatch({
       type: IMG_LOADED,
       payload: res.data.url

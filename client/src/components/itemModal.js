@@ -17,6 +17,7 @@ function ItemModal(props) {
   const [modal, setmodal] = useState(false);
   const [name, setname] = useState("");
   const [price, setprice] = useState(0.0);
+  const [desc, setDesc] = useState("");
 
   const toggle = () => {
     //inverse
@@ -34,7 +35,8 @@ function ItemModal(props) {
 
     const newItem = {
       name,
-      price
+      price,
+      description: desc
     };
     props.addItem(newItem);
     toggle();
@@ -75,9 +77,21 @@ function ItemModal(props) {
                 type="number"
                 step="0.01"
                 min="0.00"
+                className="mb-3"
                 name="price"
                 placeholder="0.0"
                 onChange={onPriceChange}
+              />
+              <Label for="desc"> Description </Label>
+              <textarea
+                id="desc"
+                type="text"
+                name="desc"
+                className="mb-3 desc_input"
+                placeholder="description"
+                onChange={e => {
+                  setDesc(e.target.value);
+                }}
               />
               <Button color="dark" style={{ marginTop: "2rem" }} block>
                 {" "}

@@ -40,7 +40,7 @@ function AppNavBar(props) {
       <NavItem>
         <span className="navbar-text mr-3">
           {" "}
-          <strong>{user ? `Welcome ${user.name}` : ""} </strong>{" "}
+          <strong>{user && `Welcome ${user.name}`} </strong>{" "}
         </span>{" "}
       </NavItem>
       <NavItem>
@@ -50,10 +50,10 @@ function AppNavBar(props) {
   );
 
   return (
-    <div>
+    <div className="nav_bar">
       <Navbar color="dark" dark expand="sm" className="mb-5">
         <Container>
-          <NavbarBrand herf="/">ShoppingList</NavbarBrand>
+          <NavbarBrand href="/">ShoppingList</NavbarBrand>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={open} navbar>
             <Nav className="ml-auto" navbar>

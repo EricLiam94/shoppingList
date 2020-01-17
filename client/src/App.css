@@ -6,6 +6,7 @@
 
 .App {
   min-height: 90vh;
+  padding-bottom: 20px;
 }
 
 .remove-btn {
@@ -56,6 +57,13 @@ li.list-group-item:hover {
   animation: pop 0.8s linear;
 }
 
+.desc_input {
+  margin-bottom: 5px;
+  width: 100%;
+  border-radius: 5px;
+  padding: 5px;
+}
+
 @keyframes pop {
   from {
     opacity: 0;
@@ -75,8 +83,16 @@ li.list-group-item:hover {
 
 @media (max-width: 400px) {
   .App {
-    min-height: 100vh;
+    min-height: 90vh;
   }
+}
+
+.nav_bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
 }
 
 /* Scroll bar  */

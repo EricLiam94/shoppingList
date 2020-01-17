@@ -9,6 +9,7 @@ const ItemRow = props => {
   const [readMode, setreadMode] = useState(true);
   const [name, setname] = useState("");
   const [price, setprice] = useState(0);
+
   useEffect(() => {
     setname(props.name);
     setprice(props.price);
@@ -52,7 +53,12 @@ const ItemRow = props => {
       {props.isAuthenticated ? (
         <div className="icon-container">
           <span className="flt-right icon-style">
-            <NavLink to={`/item/${name}/${props.id}`}>
+            <NavLink
+              to={{
+                pathname: `/item/${name}/${props.id}`,
+                state: { desc: props.desc, idx: props.idx, price }
+              }}
+            >
               <i className="fas fa-directions grey-tool"></i>{" "}
             </NavLink>
             {readMode ? (
@@ -60,16 +66,10 @@ const ItemRow = props => {
             ) : (
               <i className="fas fa-check grey-tool" onClick={confirmClick}></i>
             )}
-
-            <Button
-              className="flt-right remove-btn "
-              color="danger"
-              key={props.id}
-              size="sm"
+            <i
+              className="fas fa-trash-alt grey-tool"
               onClick={e => onDeleteClick(props.id)}
-            >
-              <i className="fas fa-trash-alt"></i>
-            </Button>
+            ></i>
           </span>
         </div>
       ) : (
