@@ -10,7 +10,6 @@ const ItemDetail = props => {
   const price = props.location.state.price;
   const idx = props.location.state.idx;
   const items = props.items;
-  // console.log(props.location.state);
   const leftIdx = idx === 0 ? items.length - 1 : idx - 1;
   const rightIdx = idx === items.length - 1 ? 0 : idx + 1;
   const nextPage = (input_idx, input_item) => {

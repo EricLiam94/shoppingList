@@ -18,6 +18,7 @@ function App() {
     store.dispatch(getItems());
     return;
   }, []);
+
   return (
     <Provider store={store}>
       <div className="App mb-5">
