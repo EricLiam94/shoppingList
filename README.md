@@ -10,4 +10,4 @@
 6. Bootstrap
 7. Express
 
-To visit website, please click [Here]("http://shoppinglist-eric.herokuapp.com/")
+To visit website, please click [Here](http://shoppinglist-eric.herokuapp.com/)
